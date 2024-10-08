@@ -435,7 +435,7 @@ In **constructor injection**, dependencies are passed to the dependent class via
         <property name="specification" ref="carSpecification"/>
     </bean>
    ```
-4. **Create the `App` Class:**
+5. **Create the `App` Class:**
    - The `App` class is the entry point of the application. It loads the Spring application context and retrieves the `Car` bean.
    - It demonstrates the use of setter injection by displaying car details.
    ```java
@@ -443,3 +443,81 @@ In **constructor injection**, dependencies are passed to the dependent class via
         Car myCar = (Car) context.getBean("myCar");
         myCar.displayDetails();
    ```
+
+# Autowiring
+Autowiring in Spring is a feature that allows you to automatically inject dependencies into your beans without needing to explicitly define them in the configuration files or via annotations. This can help simplify your configuration and make your code cleaner and easier to maintain.
+
+## 1. Autowiring by name
+**Autowiring by Name** is a dependency injection technique in Spring that automatically injects a bean into another bean based on the bean's name. This is achieved by matching the name of a property in the dependent bean with the name of a bean defined in the Spring application context.
+
+### Key Points:
+- **Name Matching:** The property name in the dependent bean must exactly match the name of the bean in the application context.
+- **Automatic Injection:** Spring automatically instantiates and injects the required bean into the dependent bean without manual configuration.
+- **Flexibility:** While it provides convenience, Autowiring by Name can sometimes lead to tight coupling between beans, making the code less maintainable.
+
+### Steps:
+
+1. **Create `com.example.autowire.name` package**:
+   - This package contains the necessary classes to demonstrate `autowiring by name`.
+2. **Define  `atowireByName.xml` file**:
+   - Define the bean's name `specification`.
+   - Initialyze the bean with the setter method.
+   - This XML file will define the beans for `Specification` and `Car`, and the `autowire` attribute for `Car` is set to `byName` so that Spring will automatically inject the `specification` bean into the Car class.
+   - Example configuration:
+   
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!-- Define the Specification bean with make and model properties -->
+        <bean id="specification" class="com.example.autowire.name.Specification">
+            <property name="make" value="Toyota" />
+            <property name="model" value="Corolla" />
+        </bean>
+
+        <!-- Autowire by Name -->
+        <bean id="myCar" class="com.example.autowire.name.Car" autowire="byName"/>
+    </beans>
+
+   ```
+3. **Main application (`App` class):**
+    - The main class loads the Spring context, retrieves the `myCar` bean, and displays the car details.
+    - Example code
+
+    ```java
+    public class App {
+        public static void main(String[] args) {
+            ApplicationContext context = new ClassPathXmlApplicationContex("autowireByName.xml");
+
+            // Load the xml file
+            Car myCar = (Car) context.getBean("myCar");
+            myCar.displayDetails();
+        }
+    }
+
+    ```
+4. **Define the `Car` class:**
+    - In the `Car` class, there's a `Specification` property, and Spring will automatically inject the bean that matches the name of this property (in this case, `specification`).
+    - The `setSpecification` method allows the Spring framework to inject the correct bean by name during the autowiring process.
+
+    ```java
+    public class Car {
+        private Specification specification;
+
+        public void setSpecification(Specification specification) {
+            this.specification = specification;
+        }
+
+        public void displayDetails() {
+            System.out.println("Car Details : " + specification.toString());
+        }
+    }
+    ```
+
+4. **Define the `Specification` class:**
+   - This class represents the specifications of the car, such as `make` and `model`. These values will be set in the `autowireByName.xml` configuration file.
+
+
