@@ -549,24 +549,24 @@ This project demonstrates how to use **Autowiring by Type** in Spring Core for d
 
 ## 3. Autowiring by Type Example
 **3.1 Java Classes**
-   - **3.1.1. `App.java`**
-       - This is the main class that loads the Spring context and retrieves the Car bean. The Car bean has its dependencies autowired by type.
-     ```java
-        package com.example.autowire.type;
+- **3.1.1. `App.java`**
+    - This is the main class that loads the Spring context and retrieves the Car bean. The Car bean has its dependencies autowired by type.
+        ```java
+            package com.example.autowire.type;
 
-        import org.springframework.context.ApplicationContext;
-        import org.springframework.context.support.ClassPathXmlApplicationContext;
+            import org.springframework.context.ApplicationContext;
+            import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-        public class App {
-            public static void main(String[] args) {
-                ApplicationContext context = new ClassPathXmlApplicationContext("autowireByType.xml");
+            public class App {
+                public static void main(String[] args) {
+                    ApplicationContext context = new ClassPathXmlApplicationContext("autowireByType.xml");
 
-                // Load the xml file
-                Car myCar = (Car) context.getBean("myCar");
-                myCar.displayDetails();
+                    // Load the xml file
+                    Car myCar = (Car) context.getBean("myCar");
+                    myCar.displayDetails();
+                }
             }
-        }
-    ```
+        ```
 
     - **3.1.2. `Car.java`**
         - The `Car` class depends on the Specification class, which is injected by Spring using autowiring by type.
@@ -585,8 +585,8 @@ This project demonstrates how to use **Autowiring by Type** in Spring Core for d
                 System.out.println("Car Details: " + specification.toString());
             }
         }
-
         ```
+        
     - **3.1.3. `Specification.java`**
         -  The `Specification` class represents the specifications of a car and contains fields for the car's `make` and `model`.
         ```java
