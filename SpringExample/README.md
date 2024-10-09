@@ -836,5 +836,92 @@ In this section, we will explore how to use the `@Component` annotation and the 
    }
    ```
 
-5. **Transition from XML to Annotations Framework**
+## 6. Transition from XML to Annotations in Spring Framework
+
+### Overview
+This section demonstrates how to transition from XML-based configuration to annotation-based configuration in Spring. By using annotations like `@ComponentScan`, `@Configuration`, and others, you can simplify configuration and reduce dependency on XML files.
+
+### Steps
+
+1. **Create `com.example.componentscan.annotation` Package**
+   - This package will contain your annotation-based Spring configuration and components.
+
+2. **Create `AppConfig` Class**
+   - Define the configuration class using the `@Configuration` annotation.
+   - Use the `@ComponentScan` annotation to specify the base package for component scanning.
+
+   ```java
+   package com.example.componentscan.annotation;
+
+   import org.springframework.context.annotation.ComponentScan;
+   import org.springframework.context.annotation.Configuration;
+
+   @Configuration
+   @ComponentScan(basePackages = "com.example.componentscan.annotation")
+   public class AppConfig {
+       // Configuration class to replace XML
+   }
+
+3. **Modify the `App` to use annotation-based configuration**
+   - Replace `ClassPathXmlApplicationContext` with `AnnotationConfigApplicationContext` to load the bean definitions from the `AppConfig` class.
+   ```java
+   package com.example.componentscan.annotation;
+
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+    public class App {
+        public static void main(String[] args) {
+            // Use annotation-based configuration
+            ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+            // Get the Employee bean
+            Employee employee = context.getBean("employee", Employee.class);
+            System.out.println(employee.toString());
+        }
+    }
+
+   ```
+
+4. **Use Annotations to Inject Values into Properties**
+   - Use the `@Value` annotation to inject primitive values and environment properties into the `Employee` class.
+   ```java
+   package com.example.componentscan.annotation;
+
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.stereotype.Component;
+
+    @Component("employee") // Define Employee as a bean
+    public class Employee {
+
+        private int employeeId;
+
+        @Value("Hello")
+        private String firstName;
+
+        @Value("${java.home}") // Inject environment property
+        private String lastName;
+
+        @Value("#{4*4}") // Inject SpEL (Spring Expression Language) value
+        private double salary;
+
+        // Getters and Setters...
+        // toString() method...
+    }
+
+   ```
+
+5. **Key Changes in Transition**
+   - **XML** Configuration: Previously, we used `componentScanDemo.xml` to define our beans and specify component scanning.
+   - Annotation Configuration: We now use the `@Configuration` and `@ComponentScan` annotations to handle the same configuration in Java.
+6. **Loading Annotation Configuration**
+   - In the `App` class, we load the annotation-based configuration by specifying the `AppConfig.class` in the `AnnotationConfigApplicationContext`.
+   ```java
+   ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+   ```
+
+### Conclusion
+
+This setup transitions the Spring configuration from XML to annotations, providing a more concise and maintainable approach. The `@Configuration`, `@ComponentScan`, and `@Value` annotations simplify the process of managing beans and injecting values, making the codebase easier to manage as the application grows.
 
