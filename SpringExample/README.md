@@ -698,27 +698,123 @@ This project demonstrates how `autowiring by constructor` works in Spring. It's 
 
 
 
-# Annotations
-**Annotation** provide a way to add metadata to our code
+# Annotations in Spring
 
-## 1. Component and Components Scan with Spring without annotation
+**Annotations** provide a way to add metadata to our code, allowing for configuration and behavior customization.
 
-## Steps 
+## 1. Component and Component Scan with Spring
 
-1. **Create `com.example.componentscan` package**
-2. **Create `Employee` Class:**
-   - Define fields like `employeeId`, `firstName`, etc.  
-   - Register `Employee` Class as a bean.  
-   - Define `getter` and `setter` methods for all the fields.  
+### Overview
+In this section, we will explore how to use the `@Component` annotation and the component scanning feature in Spring to manage beans.
+
+### Steps
+
+1. **Create `com.example.componentscan` Package**
+   - This package will contain our application classes.
+
+2. **Create `Employee` Class**
+   - Define fields such as `employeeId`, `firstName`, `lastName`, and `salary`.
+   - Register the `Employee` class as a Spring bean using the `@Component` annotation.
+   - Define getter and setter methods for all fields.
+   - Override the `toString()` method to provide a string representation of the object.
 
    ```java
-   public int getEmployeeId() {
-       return employeeId;
+
+   import org.springframework.stereotype.Component;
+
+   @Component("employee") // Component bean
+   public class Employee {
+       private int employeeId;
+       private String firstName;
+       private String lastName;
+       private double salary;
+
+       public int getEmployeeId() {
+           return employeeId;
+       }
+
+       public void setEmployeeId(int employeeId) {
+           this.employeeId = employeeId;
+       }
+
+       public String getFirstName() {
+           return firstName;
+       }
+
+       public void setFirstName(String firstName) {
+           this.firstName = firstName;
+       }
+
+       public String getLastName() {
+           return lastName;
+       }
+
+       public void setLastName(String lastName) {
+           this.lastName = lastName;
+       }
+
+       public double getSalary() {
+           return salary;
+       }
+
+       public void setSalary(double salary) {
+           this.salary = salary;
+       }
+
+       @Override
+       public String toString() {
+           return "Employee{" +
+                   "employeeId=" + employeeId +
+                   ", firstName='" + firstName + '\'' +
+                   ", lastName='" + lastName + '\'' +
+                   ", salary=" + salary +
+                   '}';
+       }
    }
+   ```è
 
+3. **Create `componentScanDemo.xml` to Define `Employee` Class as a Bean**
+    - Use this XML configuration to enable component scanning in the `com.example.componentscan` package.
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+            https://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            https://www.springframework.org/schema/context/spring-context.xsd">
 
+        <context:component-scan base-package="com.example.componentscan"/>
 
-3. **Create `componentsScanDemo.xml` to define `Employee` Class as a bean**
+    </beans>
 
+    ```
 
+4. **Create `App` Class**
+    - This class will contain the main method to run the application and retrieve the `Employee` bean.
+    ```java
+    package com.example.componentscan;
+
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+    public class App {
+        public static void main(String[] args) {
+            ApplicationContext context = new ClassPathXmlApplicationContext("componentScanDemo.xml");
+
+            // Load the XML file and get the Employee bean
+            Employee employee = context.getBean("employee", Employee.class);
+            System.out.println(employee.toString());
+        }
+    }
+
+    ```
+
+4. **Add Annotation to the `@Component`**
+   - Use the `@Component` annotation to define the `Employee` class as a Spring-managed bean
+   ```java
+   @Component("employee")
+
+   ```
 
