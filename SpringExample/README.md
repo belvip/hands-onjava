@@ -661,22 +661,41 @@ This example demonstrates how to use **Autowiring by Constructor** in Spring to 
 ### 1. `App.java`
   - The main class that loads the Spring application context from the XML configuration file and retrieves the `Car` bean to display its details.
   
-  ```java
-  package com.example.autowire.constructor;
+  
 
-  import org.springframework.context.ApplicationContext;
-  import org.springframework.context.support.ClassPathXmlApplicationContext;
+### 2. `autowireByConstructor.xml`
+- This is the Spring XML configuration file. It defines two beans:
+- `specification`: Represents the car's specification with make and model properties.
+- `myCar`: Represents the Car object and is autowired by constructor.
 
-    public class App {
-        public static void main(String[] args) {
-            ApplicationContext context = new ClassPathXmlApplicationContext("autowireByConstructor.xml"); // Loads the spring application context
+       ```xml
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-            // Load the xml file
-            Car myCar = (Car) context.getBean("myCar");
-            myCar.displayDetails();
-        }
-    }
-    ```
+            <!-- Define the Specification bean with make and model properties -->
+            <bean id="specification" class="com.example.autowire.constructor.Specification">
+                <property name="make" value="Toyota" />
+                <property name="model" value="Corolla" />
+            </bean>
+
+            <!-- Autowire the Car bean by constructor -->
+            <bean id="myCar" class="com.example.autowire.constructor.Car" autowire="constructor"/>
+            
+        </beans>
+       ```
+    
+### How Autowiring by Constructor Works
+- The `Car` class requires a `Specification` object to be passed to its constructor.
+- Spring will automatically inject the `Specification` bean into the Car bean using autowiring by constructor.
+- The `myCar` bean is defined in the XML configuration with the `autowire="constructor"` attribute, indicating that Spring should use the constructor for dependency injection.
+
+### Conclusion
+This project demonstrates how `autowiring by constructor` works in Spring. It's a powerful feature that allows for automatic dependency injection without explicitly defining the wiring in XML configuration.
+
+
 
 
 # Annotations
