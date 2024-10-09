@@ -836,3 +836,5 @@ In this section, we will explore how to use the `@Component` annotation and the 
    }
    ```
 
+5. **Transition from XML to Annotations Framework**
+
