@@ -707,16 +707,17 @@ This project demonstrates how `autowiring by constructor` works in Spring. It's 
 
 1. **Create `com.example.componentscan` package**
 2. **Create `Employee` Class:**
-   - Define fields like `employeeId`, `firstName` etc
-   - Register `Employee` Class as bean
-   - Define `getter` and `setter` method for all the fields
+   - Define fields like `employeeId`, `firstName`, etc.  
+   - Register `Employee` Class as a bean.  
+   - Define `getter` and `setter` methods for all the fields.  
 
-   
    ```java
    public int getEmployeeId() {
-        return employeeId;
-    }
-   ```
+       return employeeId;
+   }
+
+
+
 3. **Create `componentsScanDemo.xml` to define `Employee` Class as a bean**
 
 
