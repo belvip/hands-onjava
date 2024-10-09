@@ -699,6 +699,17 @@ This project demonstrates how `autowiring by constructor` works in Spring. It's 
 
 
 # Annotations
+**Annotation** provide to add metadata to our code
+
+## 1. Component and Components Scan with Spring without annotation
+
+## Steps 
+
+1. **Create `com.example.componentscan` package**
+2. **Create `Employee` Class:**
+   - Define fields like `employeeId`, `firstName` etc
+   - Register `Employee` Class as bean
+3. **Create componentsScanDemo.xml to define `Employee` Class as a bean**
 
 
 
