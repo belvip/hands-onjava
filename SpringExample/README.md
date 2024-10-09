@@ -818,3 +818,21 @@ In this section, we will explore how to use the `@Component` annotation and the 
 
    ```
 
+5. **Inject Value into Properties in Our Component**
+   -  Use the `@Value` annotation to inject values into component properties.
+   - Example : 
+   ```java
+   import org.springframework.beans.factory.annotation.Value;
+   import org.springframework.stereotype.Component;
+
+   @Component("employee")
+   public class Employee {
+       // Other fields...
+
+       @Value("#{4*4}") // Injecting the value of 4 * 4 into the salary property
+       private double salary;
+
+       // Getter and setter for salary...
+   }
+   ```
+
