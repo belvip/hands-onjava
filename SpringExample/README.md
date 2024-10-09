@@ -925,3 +925,116 @@ This section demonstrates how to transition from XML-based configuration to anno
 
 This setup transitions the Spring configuration from XML to annotations, providing a more concise and maintainable approach. The `@Configuration`, `@ComponentScan`, and `@Value` annotations simplify the process of managing beans and injecting values, making the codebase easier to manage as the application grows.
 
+## 6. Autowired Annotation
+### Definition : **Autowired annotation** is a kind of annotation that allows us to signify automatic dependency injection
+
+## Steps
+1. **Create a new class `Manager` that `Employee` class is dependent**
+   ```java
+    public class Manager {
+        private Employee employee; // Create the dependency 
+    }
+   ```
+   - Make the dependency to be injected automatically by generate the constructor injection
+   ```java
+   @Autowired
+   public Manager(Employee employee) {
+        this.employee = employee;
+    }
+   ```
+   - Add `@Autowired` annotation in order to inject dependency.
+   - We can use Constructor injection or event annotation to inject `Manager`.
+   
+# Spring Core: Components, `@Autowired`, and `@Value` Annotations
+
+**Annotations** provide a way to add metadata to our code, allowing for configuration and behavior customization.
+
+## 1. Component and Component Scan with Spring
+
+### Overview
+In this section, we will explore how to use the `@Component` annotation and the component scanning feature in Spring to manage beans.
+
+### Steps
+
+1. **Create `com.example.componentscan` Package**
+   - This package will contain our application classes.
+
+2. **Create `Employee` Class**
+   - Define fields such as `employeeId`, `firstName`, `lastName`, and `salary`.
+   - Register the `Employee` class as a Spring bean using the `@Component` annotation.
+   - Define getter and setter methods for all fields.
+   - Override the `toString()` method to provide a string representation of the object.
+
+   ```java
+   package com.example.componentscan;
+
+   import org.springframework.stereotype.Component;
+
+   @Component("employee") // Component bean
+   public class Employee {
+       private int employeeId;
+       private String firstName;
+       private String lastName;
+       private double salary;
+
+       // Getters, setters, and toString...
+   }
+
+3. **Create the `Manager` Class with `@Autowired`**
+   - Use `@Autowired` to inject the `Employee` bean as a dependency into the `Manager` class.
+   - You can inject via field or constructor. Here, we show field injection, but constructor injection is also possible.
+   ```java
+   package com.example.autowire.annotation;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Component;
+
+    @Component
+    public class Manager {
+
+        @Autowired
+        private Employee employee; // Injecting the Employee bean
+
+        // Constructor injection (commented out):
+        /* @Autowired
+        public Manager(Employee employee) {
+            this.employee = employee;
+        } */
+
+        @Override
+        public String toString() {
+            return "Manager{" +
+                    "employee=" + employee +
+                    '}';
+        }
+    }
+
+   ```
+
+4. **Create the `App` Class**
+   - The `App` class contains the main method to run the application and access the beans.
+   - The beans `Employee` and `Manager` are retrieved from the Spring context and printed out.
+   ```java
+   package com.example.autowire.annotation;
+
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+    public class App {
+        public static void main(String[] args) {
+            ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+            Employee employee = context.getBean("employee", Employee.class);
+            System.out.println(employee.toString());
+
+            Manager manager = context.getBean(Manager.class);
+            System.out.println(manager.toString());
+        }
+    }
+
+   ```
+
+## Explanation
+   - The `@Autowired` annotation automatically injects the `Employee` bean into the Manager class. Spring resolves the dependency and provides the `Employee` instance at runtime.
+   - You can inject dependencies using field, constructor, or setter-based injection.
+
