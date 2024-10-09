@@ -447,7 +447,7 @@ In **constructor injection**, dependencies are passed to the dependent class via
 # Autowiring
 Autowiring in Spring is a feature that allows you to automatically inject dependencies into your beans without needing to explicitly define them in the configuration files or via annotations. This can help simplify your configuration and make your code cleaner and easier to maintain.
 
-## 1. Autowiring by name
+## 1. Spring Core Autowiring by Name
 **Autowiring by Name** is a dependency injection technique in Spring that automatically injects a bean into another bean based on the bean's name. This is achieved by matching the name of a property in the dependent bean with the name of a bean defined in the Spring application context.
 
 ### Key Points:
@@ -519,5 +519,200 @@ Autowiring in Spring is a feature that allows you to automatically inject depend
 
 4. **Define the `Specification` class:**
    - This class represents the specifications of the car, such as `make` and `model`. These values will be set in the `autowireByName.xml` configuration file.
+
+
+# 2. Spring Core Autowiring by Type 
+
+This project demonstrates how to use **Autowiring by Type** in Spring Core for dependency injection. The application defines a `Car` bean that depends on a `Specification` bean, and Spring injects the required dependency based on the bean's type.
+
+## 1. Introduction to Autowiring by Type
+**Autowiring by Type** is a Spring mechanism that automatically injects beans into other beans based on the type of the property. When Spring finds a matching bean type in the configuration, it will inject that bean into the dependent object.
+
+### Key Points:
+- **Type Matching:** The type of the bean property in the dependent bean (e.g., `Car`) must match the type of the bean in the Spring context (e.g., `Specification`).
+- **Automatic Injection:** Spring automatically manages the injection based on the bean types defined.
+- **Flexibility:** It is more flexible than autowiring by name, especially when there are multiple beans of the same type.
+
+## 2. Project Structure
+
+```bash
+    src/main/java
+    │
+    └───com/example/autowire/type
+        │
+        ├───App.java         # Main application class
+        ├───Car.java         # Car class with a dependency on Specification
+        └───Specification.java # Dependent class representing car specifications
+    └───resources
+        └───autowireByType.xml # Spring configuration file
+```
+
+## 3. Autowiring by Type Example
+**3.1 Java Classes**
+   - **3.1.1. `App.java`**
+       - This is the main class that loads the Spring context and retrieves the Car bean. The Car bean has its dependencies autowired by type.
+     ```java
+        package com.example.autowire.type;
+
+        import org.springframework.context.ApplicationContext;
+        import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+        public class App {
+            public static void main(String[] args) {
+                ApplicationContext context = new ClassPathXmlApplicationContext("autowireByType.xml");
+
+                // Load the xml file
+                Car myCar = (Car) context.getBean("myCar");
+                myCar.displayDetails();
+            }
+        }
+    ```
+
+    - **3.1.2. `Car.java`**
+        - The `Car` class depends on the Specification class, which is injected by Spring using autowiring by type.
+        ```java
+        package com.example.autowire.type;
+
+        public class Car  {
+            // Car class depend on Specification class
+            private Specification specification;
+
+            public void setSpecification(Specification specification) {
+                this.specification = specification;
+            }
+
+            public void displayDetails() {
+                System.out.println("Car Details: " + specification.toString());
+            }
+        }
+
+        ```
+    - **3.1.3. `Specification.java`**
+        -  The `Specification` class represents the specifications of a car and contains fields for the car's `make` and `model`.
+        ```java
+        package com.example.autowire.type;
+
+        public class Specification {
+            private String make;
+            private String model;
+
+            public String getMake() {
+                return make;
+            }
+
+            public void setMake(String make) {
+                this.make = make;
+            }
+
+            public String getModel() {
+                return model;
+            }
+
+            public void setModel(String model) {
+                this.model = model;
+            }
+
+            @Override
+            public String toString() {
+                return "Specification{" +
+                        "make='" + make + '\'' +
+                        ", model='" + model + '\'' +
+                        '}';
+            }
+        }
+        ```
+    
+    - **3.1.4.  Spring Configuration (`autowireByType.xml`)**
+        -  In this XML configuration file, we define the `Specification` and Car beans. The `Car` bean is autowired by type, meaning that Spring will automatically inject the `Specification` bean into the `Car` bean.
+        ```xml
+       <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+            <!-- Define the Specification bean with make and model properties -->
+            <bean id="specification" class="com.example.autowire.type.Specification">
+                <property name="make" value="Toyota" />
+                <property name="model" value="Corolla" />
+            </bean>
+
+            <!-- Autowire the Car bean by type -->
+            <bean id="myCar" class="com.example.autowire.type.Car" autowire="byType"/>
+        </beans>
+
+        ```
+###  Conclusion
+This example demonstrates how **Autowiring by Type** simplifies dependency injection in Spring by automatically injecting beans based on their type.
+
+
+# 3. Spring Core Autowiring by Constructor 
+
+This example demonstrates how to use **Autowiring by Constructor** in Spring to automatically inject dependencies. We create a `Car` object that depends on a `Specification` object, and Spring automatically wires them together using the constructor.
+
+## 1. Introduction to Autowiring by Constructor
+**Autowiring by Constructor**   Dependencies are injected directly into the bean's constructor parameters.
+
+### Key Points:
+- **Constructor Injection:** The type of the bean property in the dependent bean (e.g., `Car`) must match the type of the bean in the Spring context (e.g., `Specification`).
+- **Mandatory Dependencies:** All dependencies must be provided through the constructor, making it a mandatory approach.
+- **Flexibility:** Autowiring by Constructor can improve code readability and maintainability by enforcing dependency injection at the construction stage.
+
+### 1. `App.java`
+  - The main class that loads the Spring application context from the XML configuration file and retrieves the `Car` bean to display its details.
+  
+  ```java
+    package com.example.autowire.constructor;
+
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+    public class App {
+        public static void main(String[] args) {
+            ApplicationContext context = new ClassPathXmlApplicationContext("autowireByConstructor.xml"); // Loads the spring application context
+
+            // Load the xml file
+            Car myCar = (Car) context.getBean("myCar");
+            myCar.displayDetails();
+        }
+    }
+    ```
+
+    ### 2. `autowireByConstructor.xml`
+       - This is the Spring XML configuration file. It defines two beans:
+       - `specification`: Represents the car's specification with make and model properties.
+       - `myCar`: Represents the Car object and is autowired by constructor.
+
+       ```xml
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+            <!-- Define the Specification bean with make and model properties -->
+            <bean id="specification" class="com.example.autowire.constructor.Specification">
+                <property name="make" value="Toyota" />
+                <property name="model" value="Corolla" />
+            </bean>
+
+            <!-- Autowire the Car bean by constructor -->
+            <bean id="myCar" class="com.example.autowire.constructor.Car" autowire="constructor"/>
+            
+        </beans>
+
+
+       ```
+    ### How Autowiring by Constructor Works
+      - The `Car` class requires a `Specification` object to be passed to its constructor.
+      -  Spring will automatically inject the `Specification` bean into the Car bean using autowiring by constructor.
+      - The `myCar` bean is defined in the XML configuration with the `autowire="constructor"` attribute, indicating that Spring should use the constructor for dependency injection.
+
+    ### Conclusion
+    This project demonstrates how `autowiring by constructor` works in Spring. It's a powerful feature that allows for automatic dependency injection without explicitly defining the wiring in XML configuration.
+
+
+
 
 
