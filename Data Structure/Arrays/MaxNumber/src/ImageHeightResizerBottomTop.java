@@ -26,9 +26,9 @@ public class ImageHeightResizerBottomTop {
     }
 
     public static void main(String[] args) {
-        String inputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\Flyers - Facture CIE SODECI - AFB - present.jpg";
-        String outputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\Flyers_resized_from_bottom.jpg";
-        int heightReduction = 120;  // The amount to reduce the height by
+        String inputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\credit.jpg";
+        String outputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\credit_resize.jpg";
+        int heightReduction = 110;  // The amount to reduce the height by
 
         try {
             cropHeightFromBottom(inputImagePath, outputImagePath, heightReduction);
