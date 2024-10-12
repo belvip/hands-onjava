@@ -62,3 +62,8 @@ Once the program is running:
 3. **Enter each element one by one.**
 
 4. **View the original and reversed arrays** displayed in the terminal.
+
+
+# Demo's images for different projects
+
+![alt text](image/arraysTwo.png)
