@@ -170,7 +170,7 @@ This is a simple Library Management System built using Java. It manages books ac
 
 2. **Run the Application**:
     - Compile and run the Java application using the following commands:
-      ```bash
-      javac Main.java
-      java Main
-      ```
+        ```bash
+        javac Main.java
+        java Main
+        ```

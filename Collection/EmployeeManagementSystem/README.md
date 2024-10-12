@@ -169,7 +169,7 @@ Here’s a brief example of how to create a new `Employee` instance and manage t
 ```java
 Employee employee = new Employee("John Doe", "Engineering", 75000);
 System.out.println(employee.toString()); // Output: John Doe - Engineering - Salary: 75000.0
-
+```
 ### Installation
 1. Clone the repository:
    ```bash
