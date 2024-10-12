@@ -10,3 +10,4 @@ These are images for all projects
 
 ## Student management system
 ![alt text](images/student.png)
+
