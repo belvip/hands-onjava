@@ -3,7 +3,7 @@
 This Java program implements a **Singly Linked List** with various operations, allowing users to manipulate the list effectively. The available operations include inserting nodes at different positions, deleting nodes, and reversing the list. The user can also specify the number of nodes to insert.
 
 # Image of the project
-![alt text](images/SinglyLinkedList.png)
+![alt text](image/SinglyLinkedList.png)
 
 ## Table of Contents 🗂️
 - [Features](#features)
