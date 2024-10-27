@@ -57,3 +57,5 @@
 
 ## Check if the queue is full:
 1. Return `true` if `rear` equals the size of the queue minus `1`, otherwise return `false`.
+
+D:\Hands-on-Java

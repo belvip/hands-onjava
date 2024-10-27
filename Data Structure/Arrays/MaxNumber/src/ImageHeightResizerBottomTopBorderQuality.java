@@ -45,9 +45,9 @@ public class ImageHeightResizerBottomTopBorderQuality {
     }
 
     public static void main(String[] args) {
-        String inputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\MasterCard.jpg";
-        String outputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\MasterCard_resized.jpg";
-        int heightReduction = 68;  // The amount to reduce the height by
+        String inputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\LOGO SARA V2.jpg";
+        String outputImagePath = "C:\\Users\\belvinard\\Downloads\\visuels\\LOGO1 SARA V2.jpg";
+        int heightReduction = 48;  // The amount to reduce the height by
         int borderRadius = 25;  // The radius for the image corners
 
         try {
