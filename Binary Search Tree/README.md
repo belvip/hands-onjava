@@ -13,8 +13,8 @@
 ### Step 2: Define the Traversal Interface
 - Define a `TraversalService` interface in the `service` package. This promotes loose coupling by allowing different traversal implementations to be swapped.
 
-### Step 3: Implement the Preorder Traversal
-- Create a class that implements the `TraversalService` interface and performs preorder traversal.
+### Step 3: Implement the Traversal service
+- Define a `TraversalService` interface in the `service` package. This promotes loose coupling by allowing different traversal implementations to be swapped.
 
 ### Step 4: Configure Spring
 - Define a configuration class in the `config` package to set up the application context. This configuration handles the instantiation of the `Node` and `TraversalService` beans.
@@ -22,6 +22,8 @@
 ### Step 5: Run the Application
 - Create a main application class to retrieve the `TraversalService` bean and perform the traversal.
 
+### Step 6: Define the Binary Search Tree (BST)
+- Create a `BinarySearchTree` class in the `service` package that includes methods for insertion and retrieves the root node.
 ---
 
 ## Explanation of Dependency Injection
@@ -36,8 +38,10 @@ The `@Service` annotation in `PreorderTraversalService` registers it as a Spring
 This approach allows switching to different traversal implementations (like `InorderTraversalService`) without changing code in `MainApp` as long as they implement `TraversalService`.
 
 ### 3. Bean Injection for Node Tree Structure
-The `binaryTree()` method in `AppConfig` creates and returns a `Node` object representing the root of a binary tree, registered as a Spring bean.  
-In `MainApp`, we get this bean using `context.getBean(Node.class)`, which allows us to access the tree structure without directly instantiating `Node` in the `MainApp` class.
+- The `binaryTree()` method in `AppConfig` creates and returns a `Node` object representing the root of a binary tree, registered as a Spring bean.  
+- In `MainApp`, we get this bean using `context.getBean(Node.class)`, which allows us to access the tree structure without directly instantiating `Node` in the `MainApp` class.
+- The `BinarySearchTree` class creates and manages the binary tree structure. In `MainApp`, we get the `BinarySearchTree` bean using `context.getBean(BinarySearchTree.class)`, which allows us to access the tree structure without directly instantiating `Node` in the `MainApp` class.
+
 
 ---
 
@@ -54,4 +58,6 @@ Working on this project developed the following skills:
 
 This project reinforced core concepts of Java, Spring, and binary tree traversal while fostering good software design practices.
 
-- In Java, an **interface** is a reference type similar to a class, used to specify a set of abstract methods that a class can implement. It defines a contract or a blueprint for classes, outlining behaviors that classes are expected to implement, without providing the implementation itself.
+## Additional Information
+
+In Java, an **interface** is a reference type similar to a class, used to specify a set of abstract methods that a class can implement. It defines a contract or a blueprint for classes, outlining behaviors that classes are expected to implement, without providing the implementation itself.
