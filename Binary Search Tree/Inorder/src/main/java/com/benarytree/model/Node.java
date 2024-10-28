@@ -1,9 +1,7 @@
-package com.benarytree.preordermodel;
+package com.benarytree.model;
 
 // This class represents a node in a binary tree
 public class Node {
-    @Data
-    @AllArgumentConstructor
     // The value stored in this node
     private int value;
 

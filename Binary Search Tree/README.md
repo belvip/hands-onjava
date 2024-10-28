@@ -53,3 +53,5 @@ Working on this project developed the following skills:
 - **Spring Bean Management**: Creating and managing beans with `@Bean` and retrieving them from the Spring context.
 
 This project reinforced core concepts of Java, Spring, and binary tree traversal while fostering good software design practices.
+
+- In Java, an **interface** is a reference type similar to a class, used to specify a set of abstract methods that a class can implement. It defines a contract or a blueprint for classes, outlining behaviors that classes are expected to implement, without providing the implementation itself.
