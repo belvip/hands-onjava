@@ -29,4 +29,22 @@ public class SumProductController {
 
         return String.format("Sum (including negatives): %d, Product (excluding negatives): %d", sum, product);
     }
+
+    @GetMapping("/calculate")
+    public String calculateGet(@RequestParam int[] array) {
+        if (array.length == 0) {
+            return "Please enter a non-empty array of integers";
+        }
+
+        int sum = arrayService.calculateSum(array);
+        int[] nonNegativeArray = java.util.Arrays.stream(array)
+                .filter(num -> num >= 0)
+                .toArray();
+        int product = nonNegativeArray.length > 0 ? arrayService.calculateProduct(nonNegativeArray) : 0;
+
+        return String.format("Sum (including negatives): %d, Product (excluding negatives): %d", sum, product);
+    }
+
+    
+
 }
