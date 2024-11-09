@@ -139,5 +139,51 @@ public class CircularSinglyLinkedList {
         return false;
     }
 
+    // Delete a node from Circular singly list
+    public void deleteOfNode(int location) {
+        if (head == null) { // Check if the list is empty
+            System.out.println("The csLL does not exist");
+            return;
+        }
+
+        if (location < 0 || location >= size) { // Check if the location is valid
+            System.out.println("Node not found at location: " + location);
+            return;
+        }
+
+        int nodeValue; // Variable to store the deleted node's value
+
+        if (location == 0) { // Deleting the head node
+            nodeValue = head.value;
+            if (head == tail) { // If there's only one node in the list
+                head = tail = null;
+                size = 0;
+            } else {
+                head = head.next; // Update head to the next node
+                tail.next = head; // Update tail to point to the new head
+                size--;
+            }
+        } else if (location == size - 1) { // Deleting the tail node
+            Node tempNode = head;
+            for (int i = 0; i < size - 2; i++) { // Traverse to the second-to-last node
+                tempNode = tempNode.next;
+            }
+            nodeValue = tail.value;
+            tempNode.next = head; // Set the second-to-last node’s next to head
+            tail = tempNode;      // Update tail to the second-to-last node
+            size--;
+        } else { // Deleting a node at any other location
+            Node tempNode = head;
+            for (int i = 0; i < location - 1; i++) { // Traverse to the node just before the location
+                tempNode = tempNode.next;
+            }
+            nodeValue = tempNode.next.value;
+            tempNode.next = tempNode.next.next; // Skip over the node to delete
+            size--;
+        }
+
+        System.out.println("Node " + nodeValue + " deleted at location: " + location);
+    }
+
 
 }

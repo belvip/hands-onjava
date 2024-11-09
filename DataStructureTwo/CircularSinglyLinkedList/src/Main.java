@@ -7,9 +7,13 @@ public class Main {
         csll.insertCSLL(4, 8);
         // System.out.println(csll.head.value);
         //  System.out.println(csll.head.next.value);
-        System.out.print("The circular singly linked list is : ");
+        System.out.print("The circular singly linked list before deletion is : ");
         csll.traverseCSLL();
-        csll.searchNode(8);
+        // csll.searchNode(8);
+
+        csll.deleteOfNode(2);
+        System.out.print("The circular singly linked list after deletion is : ");
+        csll.traverseCSLL();
     }
 
 
