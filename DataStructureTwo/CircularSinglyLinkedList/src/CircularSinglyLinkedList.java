@@ -93,4 +93,27 @@ public class CircularSinglyLinkedList {
         size++;
     }
 
+    // Traversal Method
+    public void traverseCSLL() {
+        if (head != null) { // Check if the list exists
+            Node tempNode = head;
+            do {
+                // Print the value of the current node
+                System.out.print(tempNode.value);
+
+                // Print an arrow if it's not the tail
+                if (tempNode.next != head) {
+                    System.out.print(" -> ");
+                }
+
+                // Move to the next node
+                tempNode = tempNode.next;
+            } while (tempNode != head); // Stop when we loop back to the head
+
+            System.out.println(); // New line for clean output
+        } else {
+            System.out.println("CSLL does not exist!");
+        }
+    }
+
 }
