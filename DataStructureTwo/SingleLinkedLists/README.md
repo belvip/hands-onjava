@@ -206,6 +206,7 @@ This `Main` class demonstrates how to:
 - Create a `SingleLinkedList`.
 - Insert nodes at specific positions.
 - Traverse and print the list.
+- Search a specific node.
 - Delete a specific node.
 - Delete the entire list.
 
