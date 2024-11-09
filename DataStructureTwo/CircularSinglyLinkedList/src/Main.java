@@ -9,5 +9,8 @@ public class Main {
         //  System.out.println(csll.head.next.value);
         System.out.print("The circular singly linked list is : ");
         csll.traverseCSLL();
+        csll.searchNode(8);
     }
+
+
 }

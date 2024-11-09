@@ -61,3 +61,38 @@ The `traverseCSLL()` method allows for iterating through each node in the Circul
 
 
 This method efficiently traverses and displays the entire circular singly linked list, ensuring a clear visual representation of its structure.
+
+
+## `searchNode` Method 🔍
+
+### Purpose
+The `searchNode` method is designed to search for a node with a specific value in a circular singly linked list.
+
+### Explanation of Steps
+
+1. **Check if the List is Empty**:
+   - If the `head` is `null`, it means the list is empty, and there is nothing to search.
+   - Prints "The list does not exist." and returns `false`.
+
+2. **Initialize Search Variables**:
+   - A temporary node (`tempNode`) is set to start at the `head`.
+   - A `position` counter is initialized to track the current node’s position as the search progresses.
+
+3. **Loop through the Circular List**:
+   - Uses a `do-while` loop to iterate through each node in the circular list.
+   - **Check Node Value**:
+     - If `tempNode.value` matches `nodeValue`, the node is found, and the position is printed with a message: "Found node `nodeValue` at position: `position`."
+     - Returns `true` to indicate a successful search.
+   - **Move to the Next Node**:
+     - `tempNode` is updated to point to the next node, and `position` is incremented.
+   - **Loop Condition**:
+     - The loop stops once `tempNode` loops back to the `head`, completing a full circle.
+
+4. **Node Not Found**:
+   - If the loop completes without finding the node, a message "Node not found" is printed.
+   - Returns `false` to indicate the node does not exist in the list.
+
+5. **Example of Output**
+   - `Found node 8 at position: 1`
+
+This method efficiently searches for a node in a circular linked list, returning the position if the node is found and confirming its absence otherwise.

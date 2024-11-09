@@ -116,4 +116,28 @@ public class CircularSinglyLinkedList {
         }
     }
 
+    // Search Method
+    public boolean searchNode(int nodeValue) {
+        if (head == null) { // Check if the list is empty
+            System.out.println("The list does not exist.");
+            return false;
+        }
+
+        Node tempNode = head;
+        int position = 0;
+
+        do {
+            if (tempNode.value == nodeValue) {
+                System.out.println("Found node " + nodeValue + " at position: " + position + "\n");
+                return true;
+            }
+            tempNode = tempNode.next;
+            position++;
+        } while (tempNode != head); // Stop once we loop back to the head
+
+        System.out.println("Node not found");
+        return false;
+    }
+
+
 }
