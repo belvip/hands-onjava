@@ -31,7 +31,7 @@ public class SingleLinkedList {
         return head;
     }
 
-    // Method to insert a new node with a specified value at a specified location
+    //    with a specified value at a specified location
     public void insertInLinkedList(int nodeValue, int location) {
         // Initialize a new node with the specified value
         Node node = new Node();
@@ -67,7 +67,32 @@ public class SingleLinkedList {
             tempNode.next = node;  // Link tempNode's next to the new node
         }
 
+        // Ensure the last node always points to null
+        if (tail != null) {
+            tail.next = null;  // Set tail's next to null to mark the end of the list
+        }
+
         // Increment the size to reflect the addition of a new node
         size++;
+    }
+
+    // Singly LinkedList Traversal
+    public void traversalSinglyLinkedList(){
+        if(head == null){
+            System.out.println("SLL doesn't exist");
+        }else{
+            Node tempNode = head; // Start from the head of the list
+            while(tempNode != null){
+                System.out.print(tempNode.value); // Print the value of the current node
+
+                // If the current node is not the last node, print " -> "
+                if(tempNode.next != null){
+                    System.out.print(" -> ");
+                }
+
+                tempNode = tempNode.next; // Move to the next node
+            }
+            System.out.println(); // Print a new line after traversal
+        }
     }
 }
