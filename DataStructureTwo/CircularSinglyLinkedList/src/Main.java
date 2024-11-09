@@ -14,6 +14,8 @@ public class Main {
         csll.deleteOfNode(2);
         System.out.print("The circular singly linked list after deletion is : ");
         csll.traverseCSLL();
+        System.out.print("The circular singly linked list after deletion the entire list is : ");
+        csll.deleteEntireSLL();
     }
 
 

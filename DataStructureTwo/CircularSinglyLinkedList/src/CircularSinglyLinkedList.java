@@ -185,5 +185,17 @@ public class CircularSinglyLinkedList {
         System.out.println("Node " + nodeValue + " deleted at location: " + location);
     }
 
+    // Method to delete the entire Singly Linked List
+    public void deleteEntireSLL() {
+        // Set head to null, which removes the reference to the first node
+        head = null;
+
+        // Set tail to null, which removes the reference to the last node
+        tail = null;
+
+        // Print confirmation message indicating the list has been deleted
+        System.out.println("The SLL deleted successfully");
+    }
+
 
 }
