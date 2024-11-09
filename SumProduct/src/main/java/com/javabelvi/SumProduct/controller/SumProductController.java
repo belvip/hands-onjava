@@ -45,6 +45,6 @@ public class SumProductController {
         return String.format("Sum (including negatives): %d, Product (excluding negatives): %d", sum, product);
     }
 
-    
+
 
 }
