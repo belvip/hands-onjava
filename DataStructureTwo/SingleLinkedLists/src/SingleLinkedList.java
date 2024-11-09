@@ -1,33 +1,73 @@
 // Class representing a singly linked list
 public class SingleLinkedList {
 
-    // The head (starting node) of the linked list
+    // Head node of the linked list, points to the first node
     public Node head;
 
-    // The tail (last node) of the linked list
+    // Tail node of the linked list, points to the last node
     public Node tail;
 
-    // The size (number of nodes) in the linked list
+    // Size of the linked list, tracking the number of nodes
     public int size;
 
-    // Method to create a new single-node linked list with an initial node value
+    // Method to create a new single-node linked list with an initial value
     public Node createSingleLinkedList(int nodeValue) {
-        // Initialize the head node of the linked list
+        // Create the head node of the linked list
         head = new Node();
 
-        // Create a new node with the given value
+        // Initialize a new node with the specified value
         Node node = new Node();
-        node.value = nodeValue; // Set the node's value
-        node.next = null;       // Set the next pointer to null, since this is the only node initially
+        node.value = nodeValue;  // Assign the value to the node
+        node.next = null;        // Set next to null as this is the only node
 
-        // Set both head and tail to this new node, as it's the only node in the list
+        // Set both head and tail to this new node as it’s the only node in the list
         head = node;
         tail = node;
 
-        // Set the size of the list to 1, as we now have one node
+        // Set the size of the list to 1 since we have one node
         size = 1;
 
         // Return the head node of the newly created linked list
         return head;
+    }
+
+    // Method to insert a new node with a specified value at a specified location
+    public void insertInLinkedList(int nodeValue, int location) {
+        // Initialize a new node with the specified value
+        Node node = new Node();
+        node.value = nodeValue;
+
+        // If the linked list is empty, create it with this new node
+        if (head == null) {
+            createSingleLinkedList(nodeValue);
+            return;
+        } else if (location == 0) {
+            // Insert node at the beginning
+            node.next = head; // Point new node's next to the current head
+            head = node;      // Set new node as the head of the list
+        } else if (location >= size) {
+            // Insert node at the end
+            node.next = null;  // Set new node's next to null as it’s the last node
+            tail.next = node;  // Link current tail’s next to new node
+            tail = node;       // Update tail to the new last node
+        } else {
+            // Insert node at a specified location within the list
+            Node tempNode = head; // Temporary node to traverse the list
+            int index = 0;
+
+            // Traverse until the node before the desired location
+            while (index < location - 1) {
+                tempNode = tempNode.next;
+                index++;
+            }
+
+            // Insert new node between tempNode and the next node
+            Node nextNode = tempNode.next;
+            node.next = nextNode;  // Point new node's next to the next node
+            tempNode.next = node;  // Link tempNode's next to the new node
+        }
+
+        // Increment the size to reflect the addition of a new node
+        size++;
     }
 }
