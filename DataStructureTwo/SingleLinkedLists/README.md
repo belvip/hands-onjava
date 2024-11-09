@@ -65,6 +65,43 @@ This method traverses through the entire linked list and prints the values of th
 ### Example Output 📊
 For a list with nodes having values `5 -> 6 -> 9`, the output will be:
 
+### `searchNode` Method 🔍
+
+The `searchNode` method searches for a node with a specified value in the linked list and returns its position if found. This method provides feedback in the console about whether the node was found or not.
+
+#### Method Details
+
+- **Parameters**: `nodeValue` (an integer) – the value of the node we are searching for in the linked list.
+- **Return Type**: `boolean` – returns `true` if the node is found, otherwise returns `false`.
+
+#### Explanation of the Process
+
+1. **Initialize Starting Point**:
+   - `tempNode` is set to `head`, allowing the search to start from the beginning of the list.
+   - `position` is initialized to `0`, which tracks the current node's position during traversal.
+
+2. **Traverse the Linked List**:
+   - A `while` loop iterates through each node until `tempNode` becomes `null`, meaning the end of the list is reached.
+
+3. **Check Node Value**:
+   - For each node, the method checks if `tempNode.value` matches `nodeValue`.
+   - If a match is found:
+     - The method prints a message indicating the node's value and position: `"Found node " + nodeValue + " at position : " + position`.
+     - The method then returns `true`.
+
+4. **Advance to the Next Node**:
+   - If no match is found, `tempNode` moves to the next node with `tempNode.next`, and `position` is incremented by `1`.
+
+5. **Node Not Found**:
+   - If the loop completes without finding the node, a message `"Node not found"` is printed.
+   - The method returns `false`, indicating the node is not in the list.
+
+### Example Output 📊
+For a list with nodes having values `Found node 9 at position : 4`, the output will be:
+
+This method is useful for determining the presence and position of a specific value in the `SingleLinkedList`.
+
+
 ## Main Class 🏠
 
 ### Explanation of Each Part

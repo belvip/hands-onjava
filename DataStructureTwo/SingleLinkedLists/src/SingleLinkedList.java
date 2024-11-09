@@ -95,4 +95,28 @@ public class SingleLinkedList {
             System.out.println(); // Print a new line after traversal
         }
     }
+
+    // Search for a node and return its position if found
+    public boolean searchNode(int nodeValue) {
+        Node tempNode = head; // Start from the head node
+        int position = 0;     // Initialize position to 0
+
+        // Traverse through the linked list
+        while (tempNode != null) {
+            // Check if the current node's value matches the search value
+            if (tempNode.value == nodeValue) {
+                System.out.println("Found node " + nodeValue + " at position : "  + position + "\n");
+                return true;  // Return true if node is found
+            }
+            tempNode = tempNode.next;  // Move to the next node
+            position++;  // Increment the position
+        }
+
+        // If we reach here, the node was not found
+        System.out.println("Node not found");
+        return false;  // Return false if node is not found
+    }
+
+    // Delete a node from SinglyLinkedList
+
 }
