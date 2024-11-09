@@ -101,6 +101,53 @@ For a list with nodes having values `Found node 9 at position : 4`, the output w
 
 This method is useful for determining the presence and position of a specific value in the `SingleLinkedList`.
 
+### `deleteOfNode` Method 🗑️
+
+This method deletes a node from the `SingleLinkedList` at a specified location.
+
+```java
+  public void deleteOfNode(int location) { /*...*/ }
+```
+
+### Steps and Explanation
+
+#### Check if List Exists
+- If `head` is `null`, it means the list does not exist or is empty.
+- The method prints a message: `"The SLL does not exist."` and exits.
+
+#### Validate Location
+- If `location` is out of bounds (either less than `0` or greater than or equal to `size`), the method prints `"Node not found at location: " + location` and exits.
+- This ensures that we are deleting from a valid location.
+
+#### Delete Head Node
+- If `location` is `0`, the head node is deleted.
+  - `nodeValue` stores the value of the deleted node for reference.
+  - The `head` pointer is updated to the next node in the list.
+  - If the list becomes empty after deletion (`size` becomes `0`), `tail` is also set to `null`.
+
+#### Delete Last Node
+- If `location` is `size - 1`, the last node is deleted.
+  - A temporary node (`tempNode`) traverses to the second-to-last node.
+  - The value of the last node is stored in `nodeValue`.
+  - `tempNode.next` is set to `null`, making it the new end node.
+  - `tail` is updated to `tempNode`.
+
+#### Delete Node at a Specific Middle Location
+- For deletions at any other location:
+  - `tempNode` traverses to the node before the target.
+  - The `nodeValue` is stored.
+  - `tempNode.next` is updated to skip over the target node, linking it to the subsequent node.
+  - This effectively removes the target node from the list.
+
+#### Example Output
+- After successfully deleting a node, the method prints `"Node " + nodeValue + " deleted at location: " + location`.
+- Singly linked list before deletion : `5 -> 6 -> 7 -> 8 -> 9`
+- Node `8` deleted at location: `3`
+- Singly linked list after deletion : `5 -> 6 -> 7 -> 9`
+
+This method efficiently handles edge cases for deleting nodes at various positions, such as the head, tail, and middle of the list.
+
+
 
 ## Main Class 🏠
 

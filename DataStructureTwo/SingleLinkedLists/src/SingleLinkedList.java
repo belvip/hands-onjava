@@ -117,6 +117,52 @@ public class SingleLinkedList {
         return false;  // Return false if node is not found
     }
 
-    // Delete a node from SinglyLinkedList
+    // Delete a node from SinglyLinkedList at a specified location
+    public void deleteOfNode(int location) {
+        if (head == null) {
+            System.out.println("The SLL does not exist.");
+            return;
+        }
+
+        if (location < 0 || location >= size) {
+            // Invalid location, node does not exist
+            System.out.println("Node not found at location: " + location);
+            return;
+        }
+
+        int nodeValue; // Variable to store the value of the node being deleted
+
+        if (location == 0) {
+            // Delete the head node
+            nodeValue = head.value;
+            head = head.next;  // Move head to the next node
+            size--;
+            if (size == 0) {
+                tail = null;  // If the list is now empty, set tail to null as well
+            }
+        } else if (location == size - 1) {
+            // Delete the last node
+            Node tempNode = head;
+            for (int i = 0; i < size - 2; i++) {  // Traverse to the second-to-last node
+                tempNode = tempNode.next;
+            }
+            nodeValue = tempNode.next.value; // Store value of the node being deleted
+            tempNode.next = null;  // Set next of the second-to-last node to null
+            tail = tempNode;       // Update tail to the new last node
+            size--;
+        } else {
+            // Delete a node at a specified location (in the middle)
+            Node tempNode = head;
+            for (int i = 0; i < location - 1; i++) {  // Traverse to the node before the target
+                tempNode = tempNode.next;
+            }
+            nodeValue = tempNode.next.value; // Store value of the node being deleted
+            tempNode.next = tempNode.next.next;  // Link the current node to the one after the next
+            size--;
+        }
+
+        System.out.println("Node " + nodeValue + " deleted at location: " + location);
+    }
+
 
 }
