@@ -16,7 +16,7 @@ The class `Node` represents a single node in a linked list, which can be part of
 
 This class is foundational for creating linked lists, where each node points to the next node in the sequence.
 
-## SingleLinkedList Class 🧩
+## LinkedList Class 🧩
 
 ### Explanation of Each Section
 
@@ -99,11 +99,11 @@ The `searchNode` method searches for a node with a specified value in the linked
 ### Example Output 📊
 For a list with nodes having values `Found node 9 at position : 4`, the output will be:
 
-This method is useful for determining the presence and position of a specific value in the `SingleLinkedList`.
+This method is useful for determining the presence and position of a specific value in the `LinkedList`.
 
 ### `deleteOfNode` Method 🗑️
 
-This method deletes a node from the `SingleLinkedList` at a specified location.
+This method deletes a node from the `LinkedList` at a specified location.
 
 ```java
   public void deleteOfNode(int location) { /*...*/ }
@@ -149,7 +149,7 @@ This method efficiently handles edge cases for deleting nodes at various positio
 
 ### `deleteEntireSLL` Method 🗑️🚮
 
-This method deletes the entire `SingleLinkedList`.
+This method deletes the entire `LinkedList`.
 
 ```java
 // Method to delete the entire Singly Linked List
@@ -169,13 +169,56 @@ public void deleteEntireSLL() { /*...*/ }
 
 This method ensures that all references to the nodes in the list are removed, effectively deleting the entire singly linked list. It handles the task by simply removing the head and tail references, making the list empty.
 
+# Stack Class Using Singly Linked List 📚
+
+The `Stack` class is implemented using a singly linked list to manage stack operations like `push`, `pop`, `peek`, and `delete`. This setup allows for dynamic memory allocation and efficient stack operations.
+
+## Class Definition
+
+### Stack Constructor 🏗️
+- **`Stack()`**: Initializes the stack by creating an instance of `LinkedList`. The `linkedList` instance will be used to store stack elements.
+
+## Methods in Stack Class
+
+### Push Method ➕
+- **`push(int value)`**: Adds a new element to the top of the stack.
+  - Uses `linkedList.insertInLinkedList(value, 0)` to insert the value at the beginning of the linked list, simulating stack behavior where the latest element is always at the top.
+  - Prints a message confirming the insertion.
+
+### isEmpty Method ❓
+- **`isEmpty()`**: Checks if the stack is empty.
+  - Returns `true` if `linkedList.head` is `null` (indicating no elements in the stack).
+  - Returns `false` otherwise.
+
+### Pop Method ⬆️
+- **`pop()`**: Removes and returns the top element of the stack.
+  - First, checks if the stack is empty using `isEmpty()`.
+  - If empty, prints "The stack is Empty" and returns `-1`.
+  - Otherwise, retrieves the value of `linkedList.head`, removes this node using `linkedList.deletionOfNode(0)`, and returns the value.
+
+### Peek Method 👀
+- **`peek()`**: Returns the top element of the stack without removing it.
+  - Checks if the stack is empty using `isEmpty()`.
+  - If empty, prints "The stack is Empty" and returns `-1`.
+  - Otherwise, returns the value at `linkedList.head`.
+
+### Delete Method 🗑️
+- **`deleteStack()`**: Deletes the entire stack.
+  - Sets `linkedList.head` to `null`, effectively removing all elements.
+  - Prints "The Stack is deleted" to confirm deletion.
+
+---
+
+This implementation provides a functional stack using a singly linked list, supporting core stack operations in an efficient manner.
+
+
 
 ## Main Class 🏠
 
 ### Explanation of Each Part
 
-#### Create `SingleLinkedList` Instance 🧑‍💻
-- `sLL` is an instance of `SingleLinkedList`, which will be used to manage the list operations.
+#### Create `LinkedList` Instance 🧑‍💻
+- `sLL` is an instance of `LinkedList`, which will be used to manage the list operations.
 
 #### Creating the Initial Linked List 📑
 - `createSingleLinkedList(5)` initializes the list with a single node holding the value `5`.
@@ -203,7 +246,7 @@ This method ensures that all references to the nodes in the list are removed, ef
 
 ### Summary 📊
 This `Main` class demonstrates how to:
-- Create a `SingleLinkedList`.
+- Create a `LinkedList`.
 - Insert nodes at specific positions.
 - Traverse and print the list.
 - Search a specific node.

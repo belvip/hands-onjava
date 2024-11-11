@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args) {
         // Create a new instance of SingleLinkedList
-        SingleLinkedList sLL = new SingleLinkedList();
+        LinkedList sLL = new LinkedList();
 
         // Initialize the linked list with a single node with value 5
         sLL.createSingleLinkedList(5);
@@ -13,7 +13,7 @@ public class Main {
         sLL.insertInLinkedList(9, 6);
         System.out.print("Singly linked list before deletion : ");
         sLL.traversalSinglyLinkedList();
-        // sLL.deleteOfNode(3);
+        // sLL.deletionOfNode(3);
         // System.out.print("Singly linked list after deletion : ");
         sLL.deleteEntireSLL();
         System.out.print("Singly linked list after entire deletion : ");

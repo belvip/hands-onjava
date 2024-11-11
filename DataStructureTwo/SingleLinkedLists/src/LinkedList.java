@@ -1,5 +1,5 @@
 // Class representing a singly linked list
-public class SingleLinkedList {
+public class LinkedList {
 
     // Head node of the linked list, points to the first node
     public Node head;
@@ -118,7 +118,7 @@ public class SingleLinkedList {
     }
 
     // Delete a node from SinglyLinkedList at a specified location
-    public void deleteOfNode(int location) {
+    public void deletionOfNode(int location) {
         if (head == null) {
             System.out.println("The SLL does not exist.");
             return;
