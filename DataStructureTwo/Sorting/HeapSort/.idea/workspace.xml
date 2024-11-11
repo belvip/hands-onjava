@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b88d2cef-6f80-40ac-9729-7b5939af8a01" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../CircularSinglyLinkedList/src/CircularSinglyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CircularSinglyLinkedList/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CircularSinglyLinkedList/src/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DoublyLinkedList/src/DoublyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DoublyLinkedList/src/DoublyNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../DoublyLinkedList/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../SingleLinkedLists/src/LinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BucketSort/src/BucketSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BucketSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BulbeSort/src/BubbleSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BulbeSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HeapSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InsertionSort/src/InsertionSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InsertionSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MergeSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MergeSort/src/MergeSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QuickSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QuickSort/src/QuickSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SelectionSort/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SelectionSort/src/SelectionSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../StackByArray/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../StackByArray/src/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SingleLinkedLists/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../SingleLinkedLists/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SingleLinkedLists/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../SingleLinkedLists/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SingleLinkedLists/src/SingleLinkedList.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2ohg3ARVCjcfZjhuPsUoJJpsgZn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b88d2cef-6f80-40ac-9729-7b5939af8a01" name="Changes" comment="" />
+      <created>1731327020492</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731327020492</updated>
+    </task>
+    <servers />
+  </component>
+</project>
