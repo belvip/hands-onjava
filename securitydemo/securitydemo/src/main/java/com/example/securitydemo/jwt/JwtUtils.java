@@ -49,7 +49,7 @@ public class JwtUtils {
 
     }
 
-    private String getUserNameFromJwtToken(String token) {
+    public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
                         .verifyWith((SecretKey) key())
                 .build().parseSignedClaims(token)
@@ -60,7 +60,7 @@ public class JwtUtils {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
 
-    private boolean validateJwtToken(String authToken) {
+    public boolean validateJwtToken(String authToken) {
         try{
             System.out.println("Validate");
             Jwts.parser().verifyWith((SecretKey) key()).build().parseEncryptedClaims(authToken);
