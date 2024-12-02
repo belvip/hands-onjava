@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import javax.xml.crypto.Data;
 import java.security.Key;
 import java.util.Date;
 
@@ -46,12 +45,23 @@ public class JwtUtils {
                 .expiration(new Date((new Date()).getTime() + jwtExpirationMS))
                 .signWith(key())
                 .compact();
-
     }
+
+
+    /*public String generateTokenFromUsername(String userDetails){
+        String username = userDetails.getUsername();
+        return Jwts.builder()
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date((new Date()).getTime() + jwtExpirationMS))
+                .signWith(key())
+                .compact();
+
+    }*/
 
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
-                .verifyWith((SecretKey) key())
+                        .verifyWith((SecretKey) key())
                 .build().parseSignedClaims(token)
                 .getPayload().getSubject();
     }

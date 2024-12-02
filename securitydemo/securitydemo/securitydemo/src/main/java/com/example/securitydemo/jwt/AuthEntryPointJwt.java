@@ -1,4 +1,3 @@
-
 package com.example.securitydemo.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper; // For converting Java objects to JSON

@@ -1,4 +1,3 @@
-
 package com.example.securitydemo;
 
 import com.example.securitydemo.jwt.JwtUtils;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +29,7 @@ public class GreetingController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -49,7 +50,8 @@ public class GreetingController {
         return "Hello Admin";
     }
 
-    @PostMapping("/signin")
+
+    /* @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest){
         Authentication authentication;
         try {
@@ -77,7 +79,5 @@ public class GreetingController {
 
         return ResponseEntity.ok(response);
 
-    }
-
-
+    } */
 }
