@@ -29,6 +29,7 @@ public class GreetingController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -37,29 +38,30 @@ public class GreetingController {
         return "Hello";
     }
 
+
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/user")
     public String userEndpoint(){
-        return "Hello User";
+        return "Hello, User!";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public String adminEndpoint(){
-        return "Hello Admin";
+        return "Hello, Admin!";
     }
 
+
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication;
         try {
             authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        }catch (AuthenticationException exception) {
+        } catch (AuthenticationException exception) {
             Map<String, Object> map = new HashMap<>();
             map.put("message", "Bad credentials");
             map.put("status", false);
-
             return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
         }
 
@@ -76,8 +78,5 @@ public class GreetingController {
         LoginResponse response = new LoginResponse(userDetails.getUsername(), roles, jwtToken);
 
         return ResponseEntity.ok(response);
-
     }
-
-
 }

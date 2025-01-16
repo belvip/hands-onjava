@@ -10,6 +10,10 @@ public class SumProductController {
     @Autowired
     private ArrayService arrayService;
 
+    public SumProductController(ArrayService arrayService) {
+        this.arrayService = arrayService;
+    }
+
     @PostMapping("/calculate")
     public String calculate(@RequestBody int[] array){
         if(array.length == 0){
